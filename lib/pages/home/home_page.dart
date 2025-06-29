@@ -49,11 +49,134 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget categories() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: defaultMargin,
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            SizedBox(width: defaultMargin),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
+              margin: const EdgeInsets.only(right: 16),
+              decoration: BoxDecoration(
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'All Shoes',
+                style: primaryTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
+              margin: const EdgeInsets.only(right: 16),
+              decoration: BoxDecoration(
+                color: transparentColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: subtitleColor,
+                  width: 0.5,
+                ),
+              ),
+              child: Text(
+                'Running',
+                style: subtitleTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
+              margin: const EdgeInsets.only(right: 16),
+              decoration: BoxDecoration(
+                color: transparentColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: subtitleColor,
+                  width: 0.5,
+                ),
+              ),
+              child: Text(
+                'Training',
+                style: subtitleTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
+              margin: const EdgeInsets.only(right: 16),
+              decoration: BoxDecoration(
+                color: transparentColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: subtitleColor,
+                  width: 0.5,
+                ),
+              ),
+              child: Text(
+                'Basketball',
+                style: subtitleTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
+              margin: const EdgeInsets.only(right: 16),
+              decoration: BoxDecoration(
+                color: transparentColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: subtitleColor,
+                  width: 0.5,
+                ),
+              ),
+              child: Text(
+                'Hiking',
+                style: subtitleTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: medium,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         header(),
+        categories(),
       ],
     );
   }
