@@ -158,6 +158,7 @@ class DetailChatPage extends StatelessWidget {
           ChatBubble(
             text: 'Hello, this is a sender test message',
             isSender: true,
+            hasProduct: true,
           ),
           ChatBubble(
             text: 'Hello, this is a receiver test message',
