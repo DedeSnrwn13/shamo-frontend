@@ -15,6 +15,7 @@ Color subtitleColor = const Color(0xff504F5E);
 Color incativeIconColor = const Color(0xff808191);
 Color transparentColor = Colors.transparent;
 Color blackColor = const Color(0xff2E2E2E);
+Color dividerColor = const Color(0xff2B2939);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: primaryTextColor,
