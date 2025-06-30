@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/theme.dart';
+import 'package:shamo_frontend/widgets/chat_bubble.dart';
 
 class DetailChatPage extends StatelessWidget {
   const DetailChatPage({super.key});
@@ -150,10 +151,27 @@ class DetailChatPage extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: const [
+          ChatBubble(
+            text: 'Hello, this is a sender test message',
+            isSender: true,
+          ),
+          ChatBubble(
+            text: 'Hello, this is a receiver test message',
+            isSender: false,
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
       bottomNavigationBar: chatInput(),
+      body: content(),
     );
   }
 }
