@@ -97,11 +97,131 @@ class _ProductPageState extends State<ProductPage> {
       );
     }
 
+    Widget content() {
+      return Container(
+        width: double.infinity,
+        margin: const EdgeInsets.only(top: 17),
+        decoration: BoxDecoration(
+          color: backgroundColor1,
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          children: [
+            // NOTE: HEADER
+            Container(
+              margin: EdgeInsets.only(
+                left: defaultMargin,
+                right: defaultMargin,
+                top: defaultMargin,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Terrex Urban Low',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: semiBold,
+                          ),
+                        ),
+                        Text(
+                          'Hiking',
+                          style: secondaryTextStyle.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Image.asset(
+                      'assets/button_wishlist.png',
+                      width: 46,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // NOTE: PRICE
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                top: 20,
+                left: defaultMargin,
+                right: defaultMargin,
+              ),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Price start from',
+                    style: primaryTextStyle.copyWith(
+                      fontSize: 14,
+                      fontWeight: regular,
+                    ),
+                  ),
+                  Text(
+                    '\$143,98',
+                    style: priceTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // NOTE: DESCRIPTION
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                top: defaultMargin,
+                left: defaultMargin,
+                right: defaultMargin,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Description',
+                    style: primaryTextStyle.copyWith(
+                      fontWeight: medium,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need. Casual enough for the daily commute.',
+                    style: subtitleTextStyle.copyWith(
+                      fontWeight: light,
+                    ),
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor6,
       body: ListView(
         children: [
           header(),
+          content(),
         ],
       ),
     );
