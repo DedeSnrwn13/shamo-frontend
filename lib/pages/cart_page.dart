@@ -123,7 +123,7 @@ class CartPage extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextButton(
                 onPressed: () {
-                  //
+                  Navigator.pushNamed(context, '/checkout');
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
