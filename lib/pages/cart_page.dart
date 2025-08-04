@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/theme.dart';
+import 'package:shamo_frontend/widgets/cart_card.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -77,10 +78,20 @@ class CartPage extends StatelessWidget {
       );
     }
 
+    Widget content() {
+      return ListView(
+        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+        children: const [
+          CartCard(),
+          CartCard(),
+        ],
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor3,
       appBar: header(),
-      body: emptyCart(),
+      body: content(),
     );
   }
 }
