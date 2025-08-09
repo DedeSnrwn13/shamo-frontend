@@ -14,7 +14,10 @@ class AuthService {
     required String password,
   }) async {
     var url = '$baseUrl/register';
-    var headers = {'Content-Type': 'application/json'};
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
     var body = jsonEncode({
       'name': name,
       'username': username,

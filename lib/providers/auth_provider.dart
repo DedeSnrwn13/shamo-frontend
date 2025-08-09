@@ -3,11 +3,11 @@ import 'package:shamo_frontend/models/user_model.dart';
 import 'package:shamo_frontend/services/auth_service.dart';
 
 class AuthProvider extends ChangeNotifier {
-  late UserModel _user;
+  UserModel? _user;
 
-  UserModel get user => _user;
+  UserModel? get user => _user;
 
-  set user(UserModel user) {
+  set user(UserModel? user) {
     _user = user;
     notifyListeners();
   }
