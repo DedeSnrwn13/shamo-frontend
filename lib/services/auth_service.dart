@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shamo_frontend/models/user_model.dart';
 
@@ -26,6 +27,10 @@ class AuthService {
       headers: headers,
       body: body,
     );
+
+    if (kDebugMode) {
+      print(response.body);
+    }
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
