@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo_frontend/models/user_model.dart';
+import 'package:shamo_frontend/providers/auth_provider.dart';
 import 'package:shamo_frontend/theme.dart';
 
 class EditProfilePage extends StatelessWidget {
@@ -6,6 +9,9 @@ class EditProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user!;
+
     AppBar header() {
       return AppBar(
         leading: IconButton(
@@ -53,7 +59,7 @@ class EditProfilePage extends StatelessWidget {
             ),
             TextFormField(
               decoration: InputDecoration(
-                hintText: 'Alexa Jessica',
+                hintText: user.name,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -82,7 +88,7 @@ class EditProfilePage extends StatelessWidget {
             ),
             TextFormField(
               decoration: InputDecoration(
-                hintText: '@alexajessica',
+                hintText: '@${user.username}',
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -111,7 +117,7 @@ class EditProfilePage extends StatelessWidget {
             ),
             TextFormField(
               decoration: InputDecoration(
-                hintText: 'alexajessica@gmail.com',
+                hintText: user.email,
                 hintStyle: primaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -136,11 +142,11 @@ class EditProfilePage extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage('assets/image_profile.png'),
-                  fit: BoxFit.cover,
+                  image: NetworkImage(user.profilePhotoUrl ?? 'assets/image_profile.png'),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
