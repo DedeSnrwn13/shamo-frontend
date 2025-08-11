@@ -32,7 +32,7 @@ class ProductModel {
       description: json['description'],
       tags: json['tags'],
       category: json['category'] != null ? CategoryModel.fromJson(json['category']) : null,
-      galleries: json['galleries'] != null ? json['galleries'].map((gallery) => GalleryModel.fromJson(gallery)).toList() : [],
+      galleries: json['galleries'] != null ? json['galleries'].map<GalleryModel>((gallery) => GalleryModel.fromJson(gallery)).toList() : [],
       createdAt: json['created_at'] != null ? DateTime.parse(json['created_at']) : null,
       updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
     );
