@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shamo_frontend/models/product_model.dart';
 import 'package:shamo_frontend/models/user_model.dart';
 import 'package:shamo_frontend/providers/auth_provider.dart';
+import 'package:shamo_frontend/providers/product_provider.dart';
 import 'package:shamo_frontend/theme.dart';
 import 'package:shamo_frontend/widgets/product_card.dart';
 import 'package:shamo_frontend/widgets/product_tile.dart';
@@ -13,6 +15,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user!;
+
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
 
     Widget header() {
       return Container(
@@ -211,12 +215,8 @@ class HomePage extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(width: defaultMargin),
-              const Row(
-                children: [
-                  ProductCard(),
-                  ProductCard(),
-                  ProductCard(),
-                ],
+              Row(
+                children: productProvider.products.map((product) => ProductCard(product)).toList(),
               ),
             ],
           ),
@@ -249,13 +249,8 @@ class HomePage extends StatelessWidget {
     Widget newArrivals() {
       return Container(
         margin: const EdgeInsets.only(top: 14),
-        child: const Column(
-          children: [
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-            ProductTile(),
-          ],
+        child: Column(
+          children: productProvider.products.map((product) => ProductTile(product)).toList(),
         ),
       );
     }
