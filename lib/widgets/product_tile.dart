@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/models/product_model.dart';
+import 'package:shamo_frontend/pages/product_page.dart';
 import 'package:shamo_frontend/theme.dart';
 
 class ProductTile extends StatelessWidget {
-  ProductTile(this.product, {super.key});
+  const ProductTile(this.product, {super.key});
 
-  ProductModel product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductPage(product: product),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -28,6 +34,27 @@ class ProductTile extends StatelessWidget {
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
+                loadingBuilder: (
+                  BuildContext context,
+                  Widget child,
+                  ImageChunkEvent? loadingProgress,
+                ) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                  return const Center(
+                    child: Icon(
+                      Icons.broken_image,
+                      size: 48,
+                      color: Colors.red,
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(width: 12),

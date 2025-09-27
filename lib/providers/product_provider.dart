@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shamo_frontend/models/product_model.dart';
-import 'package:shamo_frontend/models/user_model.dart';
-import 'package:shamo_frontend/services/auth_service.dart';
 import 'package:shamo_frontend/services/product_service.dart';
 
 class ProductProvider extends ChangeNotifier {
