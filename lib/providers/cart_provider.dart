@@ -19,7 +19,7 @@ class CartProvider extends ChangeNotifier {
     } else {
       _carts.add(
         CartModel(
-          id: _carts.length + 1,
+          id: _carts.length,
           product: product,
           quantity: 1,
         ),
@@ -30,21 +30,33 @@ class CartProvider extends ChangeNotifier {
   }
 
   removeCart(int id) {
-    _carts.removeAt(id);
-    notifyListeners();
+    int index = _carts.indexWhere((element) => element.id == id);
+
+    if (index != -1) {
+      _carts.removeAt(index);
+      notifyListeners();
+    }
   }
 
   addQuantity(int id) {
-    _carts[id].quantity = _carts[id].quantity! + 1;
-    notifyListeners();
+    int index = _carts.indexWhere((element) => element.id == id);
+
+    if (index != -1) {
+      _carts[index].quantity = _carts[index].quantity! + 1;
+      notifyListeners();
+    }
   }
 
   reduceQuantity(int id) {
-    _carts[id].quantity = _carts[id].quantity! - 1;
-    if (_carts[id].quantity == 0) {
-      _carts.removeAt(id);
+    int index = _carts.indexWhere((element) => element.id == id);
+
+    if (index != -1) {
+      _carts[index].quantity = _carts[index].quantity! - 1;
+      if (_carts[index].quantity == 0) {
+        _carts.removeAt(index);
+      }
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   totalItems() {
