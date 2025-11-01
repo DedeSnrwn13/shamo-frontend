@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo_frontend/providers/cart_provider.dart';
 import 'package:shamo_frontend/theme.dart';
 import 'package:shamo_frontend/widgets/checkout_card.dart';
 
@@ -7,6 +9,8 @@ class CheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
     AppBar header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -39,8 +43,13 @@ class CheckoutPage extends StatelessWidget {
                     fontWeight: medium,
                   ),
                 ),
-                const CheckoutCard(),
-                const CheckoutCard(),
+                Column(
+                  children: cartProvider.carts
+                      .map(
+                        (chart) => CheckoutCard(cart: chart),
+                      )
+                      .toList(),
+                ),
               ],
             ),
           ),
@@ -150,7 +159,7 @@ class CheckoutPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '3 items',
+                      '${cartProvider.totalItems()} items',
                       style: primaryTextStyle.copyWith(
                         fontWeight: medium,
                       ),
@@ -168,7 +177,7 @@ class CheckoutPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '\$143,98',
+                      '\$${cartProvider.totalPrice()}',
                       style: primaryTextStyle.copyWith(
                         fontWeight: medium,
                       ),
@@ -209,7 +218,7 @@ class CheckoutPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '\$143,98',
+                      '\$${cartProvider.totalPrice()}',
                       style: priceTextStyle.copyWith(
                         fontWeight: semiBold,
                       ),
