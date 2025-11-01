@@ -7,7 +7,7 @@ class CartProvider extends ChangeNotifier {
 
   List<CartModel> get carts => _carts;
 
-  set cart(List<CartModel> carts) {
+  set carts(List<CartModel> carts) {
     _carts = carts;
     notifyListeners();
   }

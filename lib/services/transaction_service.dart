@@ -13,23 +13,28 @@ class TransactionService {
   ) async {
     var url = '$baseUrl/checkout';
     var headers = {
-      'Content-Type': 'aplication/json',
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
       'Authorization': token,
     };
-    var body = jsonEncode({
-      'address': 'Sentul',
-      'items': carts
-          .map(
-            (cart) => {
-              'id': cart.id,
-              'quantity': cart.quantity,
-            },
-          )
-          .toList(),
-      'status': 'PENDING',
-      'total_price': totalPrice,
-      'shipping_price': 0,
-    });
+    var body = jsonEncode(
+      {
+        'address': 'Sentul',
+        'items': carts
+            .map(
+              (cart) => {
+                'id': cart.product?.id,
+                'quantity': cart.quantity,
+              },
+            )
+            .toList(),
+        'status': 'PENDING',
+        'total_price': totalPrice,
+        'shipping_price': 0,
+      },
+    );
+
+    print('Body: $body');
 
     var response = await http.post(
       Uri.parse(url),
@@ -37,7 +42,7 @@ class TransactionService {
       body: body,
     );
 
-    print(response.body);
+    print('Response: ${response.body}');
 
     if (response.statusCode == 200) {
       return true;
